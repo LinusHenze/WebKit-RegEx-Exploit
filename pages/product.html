@@ -1,0 +1,68 @@
+<template>
+  <div class="page" data-name="catalog">
+    <div class="navbar">
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="ios-only">Back</span>
+          </a>
+        </div>
+        <div class="title">{{product.title}}</div>
+        <div class="right">
+          <div class="chip" style="font-weight: 500;">
+            <div class="chip-media bg-color-blue">
+              <img src="img/Revokes.png" width="24px" height="24px" style="border-radius: 50%;">
+            </div>
+            <div class="chip-label status">Checking</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="list searchbar-found">
+        <ul>
+          <li>
+            <a href="#" class="item-link item-content">
+              <div class="item-media">
+                <img src="img/Ignition.png" class="lazy lazy-fade-in" width="60px" height="60px" style="border-radius: 23.37%;">
+              </div>
+              <div class="item-inner">
+                <div class="item-title">
+                  <div class="item-header">{{ product.author }}</div>
+                  {{ product.title }}
+                  <div class="item-footer">{{ product.category }}</div>
+                </div>
+                <div class="item-after">
+                  <span class="badge" style="width: 80px; height: 30px; line-height: 30px; background: #3E92CC;">
+                    <a href="#" style="color: white; font-weight: 600; font-size: 14px;">GET</a>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="block-title">About {{product.title}}</div>
+      <div class="block block-strong">
+        {{product.description}}
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      var productId = this.$route.params.id;
+      var currentProduct;
+      this.$root.products.forEach(function (product) {
+        if (product.id === productId) {
+          currentProduct = product;
+        }
+      });
+      return {
+        product: currentProduct,
+      };
+    }
+  };
+</script>
